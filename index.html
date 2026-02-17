@@ -15,21 +15,6 @@ display:flex;
 justify-content:center;
 align-items:center;
 color:white;
-overflow:hidden;
-}
-
-/* خلفية فوانيس */
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:url("https://i.imgur.com/6Iej2c3.png");
-background-size:400px;
-opacity:0.07;
-pointer-events:none;
 }
 
 /* صندوق البداية */
@@ -40,7 +25,6 @@ border-radius:20px;
 text-align:center;
 backdrop-filter:blur(10px);
 width:350px;
-box-shadow:0 0 40px rgba(0,0,0,0.3);
 }
 
 input{
@@ -63,9 +47,20 @@ font-size:18px;
 cursor:pointer;
 }
 
-.showBtn{background:#0ea5e9;color:white;}
-.saveBtn{background:#22c55e;color:white;}
-.whatsBtn{background:#25D366;color:white;}
+.showBtn{
+background:#0ea5e9;
+color:white;
+}
+
+.saveBtn{
+background:#22c55e;
+color:white;
+}
+
+.whatsBtn{
+background:#25D366;
+color:white;
+}
 
 /* بطاقة التهنئة */
 .card{
@@ -74,74 +69,33 @@ margin-top:20px;
 }
 
 .ramadanDesign{
-width:520px;
-height:520px;
+width:500px;
+height:500px;
 background:white;
 border-radius:25px;
-padding:45px;
+padding:40px;
 color:#123d6b;
 text-align:center;
 position:relative;
-box-shadow:0 25px 70px rgba(0,0,0,0.35);
 overflow:hidden;
+box-shadow:0 20px 60px rgba(0,0,0,0.25);
 }
 
-/* إطار ذهبي */
-.ramadanDesign::before{
-content:"";
-position:absolute;
-inset:0;
-border-radius:25px;
-padding:2px;
-background:linear-gradient(45deg,gold,transparent,gold);
--webkit-mask:
-linear-gradient(#fff 0 0) content-box,
-linear-gradient(#fff 0 0);
--webkit-mask-composite: xor;
-mask-composite: exclude;
-}
-
-/* فوانيس يمين */
-.ramadanDesign::after{
-content:"";
-position:absolute;
-top:0;
-right:0;
-width:120px;
-height:100%;
-background:url('https://i.ibb.co/2k3Qw6S/ramadan-pattern.png'); repeat-y;
-background-size:100px;
-opacity:0.15;
-}
-
-/* فوانيس يسار */
-.lanternLeft{
-position:absolute;
-top:0;
-left:0;
-width:120px;
-height:100%;
-background:url("https://i.imgur.com/M9bGz6A.png") repeat-y;
-background-size:100px;
-opacity:0.15;
-}
-
-/* الشعار */
+/* شعار */
 .logo{
-width:230px;
+width:220px;
 margin-bottom:25px;
 }
 
-/* النص */
+/* نص */
 .text{
-font-size:22px;
-line-height:2;
-font-weight:500;
+font-size:20px;
+line-height:1.9;
 }
 
 .name{
-margin-top:35px;
-font-size:32px;
+margin-top:30px;
+font-size:30px;
 font-weight:bold;
 color:#0a2540;
 }
@@ -150,71 +104,20 @@ color:#0a2540;
 margin-top:10px;
 font-size:14px;
 color:#888;
-}/* فوانيس يمين ويسار */
-.ramadanDesign:before,
-.ramadanDesign:after{
-content:"";
-position:absolute;
-top:-30px;
-width:80px;
-height:160px;
-background:url('https://i.imgur.com/6X4K0bQ.png') no-repeat center;
-background-size:contain;
-opacity:0.9;
 }
 
-.ramadanDesign:before{
-left:-40px;
-animation:float1 3s ease-in-out infinite;
-}
-
-.ramadanDesign:after{
-right:-40px;
-animation:float2 3s ease-in-out infinite;
-}
-
-/* حركة الفوانيس */
-@keyframes float1{
-0%{transform:translateY(0)}
-50%{transform:translateY(10px)}
-100%{transform:translateY(0)}
-}
-
-@keyframes float2{
-0%{transform:translateY(10px)}
-50%{transform:translateY(0)}
-100%{transform:translateY(10px)}
-}
-
-/* نجوم رمضان */
-body:before{
-content:"";
-position:fixed;
-width:100%;
-height:100%;
-background:url('https://i.imgur.com/9QZ7Q9H.png');
-opacity:0.15;
-pointer-events:none;
-}
-  /* الفوانيس */
+/* الفوانيس */
 .lantern{
-position:fixed;
+position:absolute;
 width:90px;
-z-index:1;
-animation:float 4s ease-in-out infinite;
 opacity:0.95;
 }
 
-.l1{top:40px; left:60px;}
-.l2{top:80px; right:70px; animation-delay:1s;}
-.l3{bottom:80px; left:80px; animation-delay:2s;}
-.l4{bottom:60px; right:60px; animation-delay:3s;}
+.l1{top:-20px; left:-20px;}
+.l2{top:-20px; right:-20px;}
+.l3{bottom:-20px; left:-20px;}
+.l4{bottom:-20px; right:-20px;}
 
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(15px)}
-100%{transform:translateY(0)}
-}
 </style>
 </head>
 
@@ -223,7 +126,7 @@ opacity:0.95;
 <div class="startBox">
 
 <h2>🌙 تهنئة رمضان</h2>
-<input type="text" id="name" placeholder="اكتب الاسم هنا">
+<input type="text" id="name" placeholder="اكتب اسم الشخص">
 
 <button class="showBtn" onclick="showCard()">عرض التهنئة</button>
 
@@ -231,8 +134,13 @@ opacity:0.95;
 
 <div class="ramadanDesign" id="capture">
 
-<div class="lanternLeft"></div>
+<!-- الفوانيس -->
+<img src="https://i.ibb.co/2q6D4h0/lantern.png" class="lantern l1">
+<img src="https://i.ibb.co/2q6D4h0/lantern.png" class="lantern l2">
+<img src="https://i.ibb.co/2q6D4h0/lantern.png" class="lantern l3">
+<img src="https://i.ibb.co/2q6D4h0/lantern.png" class="lantern l4">
 
+<!-- الشعار -->
 <img src="Logo.jpg" class="logo">
 
 <div class="text">
@@ -271,23 +179,18 @@ function saveImage(){
 html2canvas(document.getElementById("capture")).then(canvas=>{
 let link=document.createElement("a");
 link.download="ramadan.png";
-link.href=canvas.toDataURL("image/png");
+link.href=canvas.toDataURL();
 link.click();
 });
 }
 
 function shareWhats(){
 let name=document.getElementById("name").value;
-let msg="رمضان مبارك 🌙\n"+name+"\nمن وحدة الرياض للتجارة";
+let msg="🌙 رمضان مبارك\n"+name+"\nمن وحدة الرياض للتجارة";
 let url="https://wa.me/?text="+encodeURIComponent(msg);
 window.open(url,"_blank");
 }
 </script>
-<!-- فوانيس رمضان -->
-<img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" class="lantern l1">
-<img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" class="lantern l2">
-<img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" class="lantern l3">
-<img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" class="lantern l4">
-  
+
 </body>
 </html>

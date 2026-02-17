@@ -2,61 +2,63 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تهنئة رمضان</title>
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<!-- خطوط مزخرفة -->
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+
 body{
 margin:0;
-font-family:Tahoma;
-background:linear-gradient(135deg,#0b2a66,#1548a0);
+font-family:'Cairo',sans-serif;
+background:linear-gradient(135deg,#0c2d63,#154a9a);
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+flex-direction:column;
 color:white;
 }
 
 /* صفحة الإدخال */
-#formPage{
+.start{
 text-align:center;
 }
 
-input{
-padding:12px;
-width:220px;
+.start input{
+padding:14px;
+width:260px;
+border-radius:10px;
 border:none;
-border-radius:8px;
 font-size:16px;
-}
-
-button{
-padding:10px 20px;
-border:none;
-border-radius:8px;
-background:#1cc88a;
-color:white;
-font-size:15px;
-cursor:pointer;
 margin-top:10px;
+text-align:center;
 }
 
-/* صفحة التهنئة */
-#cardPage{
-display:none;
-flex-direction:column;
-align-items:center;
+.start button{
+margin-top:10px;
+padding:12px 30px;
+border:none;
+border-radius:10px;
+background:#1fa2ff;
+color:#fff;
+font-size:16px;
+cursor:pointer;
 }
 
+/* كرت التهنئة */
 .card{
+display:none;
 width:500px;
 height:500px;
-background:linear-gradient(135deg,#123a88,#1e5fd1);
+background:linear-gradient(180deg,#184a9c,#0c2d63);
 border-radius:25px;
-position:relative;
+padding:40px 25px;
 text-align:center;
-padding:40px 30px;
-box-shadow:0 0 40px rgba(0,0,0,0.5);
+position:relative;
+box-shadow:0 20px 60px rgba(0,0,0,0.5);
 }
 
 /* الشعار */
@@ -68,61 +70,66 @@ width:140px;
 }
 
 /* عنوان رمضان */
-.title{
-font-size:42px;
-font-weight:bold;
-margin-top:60px;
-background:linear-gradient(90deg,#ffffff,#a8d8ff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+.ramadan-title{
+font-family:'Lalezar',cursive;
+font-size:55px;
+margin-top:20px;
+color:#e7f6ff;
+text-shadow:0 0 20px rgba(255,255,255,0.6);
 }
 
 /* النص */
 .text{
-margin-top:20px;
-line-height:1.8;
+margin-top:15px;
+line-height:2;
 font-size:18px;
+color:#eaf6ff;
 }
 
-/* الاسم */
 .name{
-margin-top:20px;
-font-size:26px;
+margin-top:15px;
+font-size:28px;
+color:#7fe0ff;
 font-weight:bold;
-color:#a8f0ff;
 }
 
-/* صورة رمضان */
-.ramadan-img{
+/* صورة المسجد */
+.mosque{
 width:220px;
 margin-top:25px;
-opacity:0.95;
 }
 
+/* زر حفظ */
 .saveBtn{
-margin-top:20px;
-background:#f6c23e;
+margin-top:25px;
+padding:14px 35px;
+border:none;
+border-radius:12px;
+background:#00c3ff;
+color:#fff;
+font-size:16px;
+cursor:pointer;
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- صفحة الإدخال -->
-<div id="formPage">
+<!-- صفحة إدخال الاسم -->
+<div class="start" id="startPage">
 <h2>اكتب اسمك لعرض التهنئة</h2>
-<input type="text" id="username" placeholder="اكتب اسمك هنا">
+<input type="text" id="username" placeholder="اكتب الاسم هنا">
 <br>
 <button onclick="showCard()">عرض التهنئة</button>
 </div>
 
-<!-- صفحة التهنئة -->
-<div id="cardPage">
-<div class="card" id="capture">
+<!-- كرت التهنئة -->
+<div class="card" id="card">
 
-<img src="Logo.png" class="logo">
+<img src="logo.png" class="logo">
 
-<div class="title">رمضان مبارك</div>
+<div class="ramadan-title">رمضان مبارك</div>
 
 <div class="text">
 نسأل الله أن يجعله شهر خير وبركة<br>
@@ -130,31 +137,35 @@ background:#f6c23e;
 كل عام وأنتم بخير
 </div>
 
-<div class="name" id="namePlace"></div>
+<div class="name" id="nameText"></div>
 
-<img src="ramadan.png" class="ramadan-img">
+<img src="mosque.png" class="mosque">
 
 </div>
 
-<button class="saveBtn" onclick="downloadImage()">حفظ كصورة</button>
-</div>
+<button class="saveBtn" id="saveBtn" onclick="saveImage()" style="display:none;">حفظ كصورة</button>
+
+<!-- مكتبة تحويل لصورة -->
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 <script>
 function showCard(){
-let name = document.getElementById("username").value;
-if(name.trim()==""){
-alert("اكتب اسمك أولاً");
+let name=document.getElementById("username").value;
+if(name==""){
+alert("اكتب الاسم أول");
 return;
 }
-document.getElementById("namePlace").innerText = name;
-document.getElementById("formPage").style.display="none";
-document.getElementById("cardPage").style.display="flex";
+
+document.getElementById("nameText").innerText=name;
+document.getElementById("startPage").style.display="none";
+document.getElementById("card").style.display="block";
+document.getElementById("saveBtn").style.display="block";
 }
 
-function downloadImage(){
-html2canvas(document.getElementById("capture")).then(canvas=>{
+function saveImage(){
+html2canvas(document.getElementById("card")).then(canvas=>{
 let link=document.createElement("a");
-link.download="ramadan.png";
+link.download="ramadan-card.png";
 link.href=canvas.toDataURL();
 link.click();
 });

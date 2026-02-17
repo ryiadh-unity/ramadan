@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تهنئة رمضان</title>
 
-<!-- خطوط مزخرفة -->
-<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<!-- خطوط مزخرفة فخمة -->
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -22,7 +22,7 @@ flex-direction:column;
 color:white;
 }
 
-/* صفحة الإدخال */
+/* صفحة البداية */
 .start{
 text-align:center;
 }
@@ -42,23 +42,23 @@ margin-top:10px;
 padding:12px 30px;
 border:none;
 border-radius:10px;
-background:#1fa2ff;
+background:#00c3ff;
 color:#fff;
 font-size:16px;
 cursor:pointer;
 }
 
-/* كرت التهنئة */
+/* كرت التهنئة مربع */
 .card{
 display:none;
-width:500px;
-height:500px;
-background:linear-gradient(180deg,#184a9c,#0c2d63);
-border-radius:25px;
+width:480px;
+height:480px;
+background:linear-gradient(180deg,#1b4fa8,#0c2d63);
+border-radius:30px;
 padding:40px 25px;
 text-align:center;
 position:relative;
-box-shadow:0 20px 60px rgba(0,0,0,0.5);
+box-shadow:0 25px 70px rgba(0,0,0,0.5);
 }
 
 /* الشعار */
@@ -66,16 +66,16 @@ box-shadow:0 20px 60px rgba(0,0,0,0.5);
 position:absolute;
 top:20px;
 right:20px;
-width:140px;
+width:130px;
 }
 
-/* عنوان رمضان */
+/* عنوان رمضان مزخرف */
 .ramadan-title{
-font-family:'Lalezar',cursive;
-font-size:55px;
-margin-top:20px;
-color:#e7f6ff;
-text-shadow:0 0 20px rgba(255,255,255,0.6);
+font-family:'Reem Kufi Fun',cursive;
+font-size:60px;
+margin-top:40px;
+color:#ffffff;
+text-shadow:0 0 25px rgba(255,255,255,0.7);
 }
 
 /* النص */
@@ -86,16 +86,17 @@ font-size:18px;
 color:#eaf6ff;
 }
 
+/* الاسم */
 .name{
-margin-top:15px;
-font-size:28px;
+margin-top:18px;
+font-size:26px;
 color:#7fe0ff;
 font-weight:bold;
 }
 
-/* صورة المسجد */
+/* صورة رمضان */
 .mosque{
-width:220px;
+width:200px;
 margin-top:25px;
 }
 
@@ -109,6 +110,7 @@ background:#00c3ff;
 color:#fff;
 font-size:16px;
 cursor:pointer;
+display:none;
 }
 
 </style>
@@ -116,7 +118,6 @@ cursor:pointer;
 
 <body>
 
-<!-- صفحة إدخال الاسم -->
 <div class="start" id="startPage">
 <h2>اكتب اسمك لعرض التهنئة</h2>
 <input type="text" id="username" placeholder="اكتب الاسم هنا">
@@ -124,10 +125,10 @@ cursor:pointer;
 <button onclick="showCard()">عرض التهنئة</button>
 </div>
 
-<!-- كرت التهنئة -->
 <div class="card" id="card">
 
-<img src="logo.png" class="logo">
+<!-- الشعار -->
+<img src="logo.png" class="logo" onerror="this.style.display='none'">
 
 <div class="ramadan-title">رمضان مبارك</div>
 
@@ -143,9 +144,8 @@ cursor:pointer;
 
 </div>
 
-<button class="saveBtn" id="saveBtn" onclick="saveImage()" style="display:none;">حفظ كصورة</button>
+<button class="saveBtn" id="saveBtn" onclick="saveImage()">حفظ كصورة</button>
 
-<!-- مكتبة تحويل لصورة -->
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 <script>
@@ -155,7 +155,6 @@ if(name==""){
 alert("اكتب الاسم أول");
 return;
 }
-
 document.getElementById("nameText").innerText=name;
 document.getElementById("startPage").style.display="none";
 document.getElementById("card").style.display="block";

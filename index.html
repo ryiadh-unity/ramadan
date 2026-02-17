@@ -3,10 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>تهنئة رمضان</title>
 
-<!-- خط مزخرف -->
 <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&display=swap" rel="stylesheet">
 
 <style>
@@ -22,7 +20,7 @@ align-items:center;
 flex-direction:column;
 }
 
-/* صفحة الإدخال */
+/* صفحة البداية */
 .start{
 text-align:center;
 }
@@ -50,56 +48,55 @@ cursor:pointer;
 /* كرت التهنئة */
 .card{
 display:none;
-width:500px;
-height:500px;
+width:480px;
+height:480px;
 background:radial-gradient(circle at top,#1e4fa3,#0a2a63);
 border-radius:25px;
 box-shadow:0 0 40px rgba(0,0,0,0.5);
 position:relative;
 text-align:center;
-padding-top:40px;
+padding:30px 20px;
+overflow:hidden;
 }
 
 /* الشعار */
 .logo{
 position:absolute;
-top:20px;
+top:18px;
 right:20px;
-width:130px;
+width:120px;
 }
 
-/* عنوان رمضان مزخرف */
+/* رمضان مبارك مزخرفة */
 .ramadan-title{
 font-family:'Aref Ruqaa',serif;
-font-size:55px;
+font-size:50px;
 color:#fff;
-text-align:center;
-margin-top:30px;
-letter-spacing:2px;
-text-shadow:0 0 10px rgba(255,255,255,0.8),
+margin-top:20px;
+text-shadow:0 0 10px rgba(255,255,255,0.9),
            0 0 30px rgba(0,200,255,0.6);
 }
 
 /* النص */
 .text{
 color:white;
-margin-top:20px;
+margin-top:15px;
 line-height:2;
-font-size:18px;
+font-size:17px;
 }
 
 /* الاسم */
 .name{
-margin-top:20px;
-font-size:28px;
+margin-top:18px;
+font-size:26px;
 color:#7de3ff;
 font-weight:bold;
 }
 
 /* صورة المسجد */
 .mosque{
-width:230px;
-margin-top:20px;
+width:200px;
+margin-top:15px;
 opacity:0.95;
 }
 
@@ -120,7 +117,7 @@ cursor:pointer;
 
 <body>
 
-<!-- صفحة البداية -->
+<!-- صفحة إدخال الاسم -->
 <div class="start" id="startPage">
 <h2 style="color:white">اكتب اسمك لعرض التهنئة</h2>
 <input type="text" id="username" placeholder="اكتب اسمك">
@@ -133,7 +130,7 @@ cursor:pointer;
 
 <img src="Logo.png" class="logo">
 
-<div class="ramadan-title">﷽ رمضان مبارك ✦</div>
+<div class="ramadan-title">رمضان مبارك</div>
 
 <div class="text">
 نسأل الله أن يجعله شهر خير وبركة<br>
@@ -151,7 +148,6 @@ cursor:pointer;
 حفظ كصورة
 </button>
 
-<!-- مكتبة تصوير -->
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 <script>

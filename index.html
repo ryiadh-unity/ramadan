@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تهنئة رمضان | وحدة الرياض</title>
+<title>تهنئة رمضان | وحدة الرياض للتجارة</title>
 
 <style>
 body{
 margin:0;
-font-family:tahoma;
+font-family:Tajawal, Arial;
 background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 height:100vh;
 display:flex;
@@ -22,99 +22,132 @@ background:rgba(255,255,255,0.08);
 backdrop-filter:blur(15px);
 padding:40px;
 border-radius:20px;
+width:380px;
 text-align:center;
-width:350px;
 box-shadow:0 0 40px rgba(0,0,0,0.4);
+}
+
+.logo{
+width:120px;
+margin-bottom:15px;
+}
+
+h2{
+margin:5px 0;
+font-size:26px;
+}
+
+p{
+opacity:.8;
+margin-bottom:20px;
 }
 
 input{
 width:100%;
-padding:15px;
+padding:14px;
 border:none;
-border-radius:10px;
-margin-top:15px;
+border-radius:12px;
 font-size:18px;
 text-align:center;
+margin-bottom:15px;
 }
 
 button{
 width:100%;
-padding:15px;
+padding:14px;
 border:none;
 border-radius:12px;
-margin-top:12px;
 font-size:18px;
+margin-top:10px;
 cursor:pointer;
+font-weight:bold;
 }
 
 .show{
-background:#00c6ff;
+background:linear-gradient(45deg,#00c6ff,#0072ff);
 color:white;
 }
 
 .save{
-background:#00e676;
+background:linear-gradient(45deg,#00b09b,#96c93d);
 color:white;
-display:none;
+}
+
+.whatsapp{
+background:linear-gradient(45deg,#25D366,#128C7E);
+color:white;
 }
 
 .card{
-display:none;
 margin-top:20px;
 background:linear-gradient(135deg,#1e3c72,#2a5298);
-padding:30px;
-border-radius:20px;
+padding:25px;
+border-radius:18px;
+display:none;
 }
 
-.name{
-font-size:28px;
+.card h3{
+margin:10px 0;
+font-size:26px;
+}
+
+.footer{
 margin-top:15px;
-color:#fff;
+font-size:12px;
+opacity:.6;
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
+<div class="box" id="capture">
+
+<img src="Logo.jpg" class="logo">
 
 <h2>وحدة الرياض للتجارة</h2>
 <p>اكتب اسمك واطبع التهنئة</p>
 
-<input type="text" id="name" placeholder="اكتب الاسم هنا">
+<input type="text" id="name" placeholder="اكتب اسمك هنا">
 
-<button class="show" onclick="generate()">عرض التهنئة</button>
+<button class="show" onclick="showCard()">عرض التهنئة</button>
 
 <div class="card" id="card">
-<h2>رمضان مبارك 🌙</h2>
-<div class="name" id="clientName"></div>
+<h3>🌙 رمضان مبارك</h3>
+<h2 id="clientName"></h2>
 <p>تتمنى لكم وحدة الرياض للتجارة شهراً مباركاً</p>
 </div>
 
-<button class="save" id="saveBtn" onclick="saveImage()">📸 حفظ كصورة</button>
+<button class="save" onclick="saveImage()">📸 حفظ كصورة</button>
+<button class="whatsapp" onclick="sendWhats()">📲 مشاركة واتساب</button>
+
+<div class="footer">تصميم خاص بالشركة</div>
 
 </div>
 
 <script>
-function generate(){
-let name = document.getElementById("name").value;
-if(name===""){
-alert("اكتب الاسم");
-return;
-}
-
-document.getElementById("clientName").innerText = name;
+function showCard(){
+let name=document.getElementById("name").value;
+if(name===""){alert("اكتب الاسم");return;}
+document.getElementById("clientName").innerText=name;
 document.getElementById("card").style.display="block";
-document.getElementById("saveBtn").style.display="block";
 }
 
 function saveImage(){
-html2canvas(document.getElementById("card")).then(canvas=>{
+html2canvas(document.querySelector("#capture")).then(canvas=>{
 let link=document.createElement("a");
 link.download="ramadan.png";
 link.href=canvas.toDataURL();
 link.click();
 });
+}
+
+function sendWhats(){
+let name=document.getElementById("name").value;
+if(name===""){alert("اكتب الاسم");return;}
+let msg=`رمضان مبارك 🌙\n${name}\nمن وحدة الرياض للتجارة`;
+let url="https://wa.me/?text="+encodeURIComponent(msg);
+window.open(url,"_blank");
 }
 </script>
 

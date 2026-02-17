@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تهنئة رمضان</title>
+<title>تهنئة رمضان - وحدة الرياض</title>
 
 <style>
 body{
 margin:0;
 font-family:Tajawal, Arial;
-background:#0b1f44;
+background:#13294b; /* لون فاخر يناسب شعارك */
 display:flex;
 justify-content:center;
 align-items:center;
@@ -17,107 +17,63 @@ height:100vh;
 color:white;
 }
 
-/* صندوق البداية /
-.startBox{
-text-align:center;
-}
-
-input{
-width:260px;
-padding:15px;
-border:none;
-border-radius:10px;
-font-size:18px;
-text-align:center;
-margin-top:15px;
-}
-
-button{
-margin-top:15px;
-padding:15px;
-width:260px;
-border:none;
-border-radius:12px;
-font-size:18px;
-cursor:pointer;
-background:#1da1f2;
-color:white;
-}
-
-/ البطاقة /
+/* الكرت */
 .card{
-display:none;
-margin-top:20px;
-}
-
-.design{
-width:500px;
-height:620px;
-background:#0b1f44;
+width:600px;
+background:#162e57;
 border-radius:20px;
-padding:40px;
-position:relative;
+padding:50px 40px;
 text-align:center;
+position:relative;
 box-shadow:0 0 40px rgba(0,0,0,0.4);
 }
 
-/ الشعار /
+/* الشعار فوق يمين */
 .logo{
 position:absolute;
 top:25px;
 right:25px;
-width:140px;
-height:auto;
-object-fit:contain;
+width:160px;
 }
 
-/ رمضان مبارك /
+/* رمضان مبارك */
 .ramadan{
-font-size:60px;
-margin-top:80px;
+font-size:55px;
 font-weight:bold;
+margin-top:40px;
+margin-bottom:20px;
 }
 
-/ النص /
+/* النص */
 .text{
-margin-top:20px;
-font-size:20px;
-line-height:1.9;
-color:#e5e7eb;
+font-size:22px;
+line-height:2;
+margin-top:15px;
 }
 
-/ الاسم /
+/* الاسم */
 .name{
 margin-top:25px;
-font-size:28px;
-color:#60a5fa;
+font-size:26px;
+color:#7db1ff;
 font-weight:bold;
 }
 
-/ الزخرفة تحت */
+/* زخرفة تحت */
 .bottom{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-opacity:0.7;
+margin-top:50px;
+font-size:80px;
+opacity:0.15;
+letter-spacing:15px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="startBox">
+<div class="card">
 
-<h2>اكتب الاسم</h2>
-<input type="text" id="name" placeholder="اكتب الاسم هنا">
-
-<button onclick="showCard()">عرض التهنئة</button>
-
-<div class="card" id="card">
-
-<div class="design" id="capture">
-
+<!-- شعارك -->
 <img src="Logo.jpg" class="logo">
 
 <div class="ramadan">رمضان مبارك</div>
@@ -128,26 +84,11 @@ opacity:0.7;
 كل عام وأنتم بخير
 </div>
 
-<div class="name" id="personName"></div>
+<div class="name" id="personName">اسم العميل</div>
 
-<img src="https://i.imgur.com/2s7bE9Z.png" class="bottom">
-
-</div>
+<div class="bottom">☪ ✦ ☾ ✧</div>
 
 </div>
-</div>
-
-<script>
-function showCard(){
-let name=document.getElementById("name").value;
-if(name==""){
-alert("اكتب الاسم");
-return;
-}
-document.getElementById("personName").innerText=name;
-document.getElementById("card").style.display="block";
-}
-</script>
 
 </body>
 </html>

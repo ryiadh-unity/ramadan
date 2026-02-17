@@ -3,75 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>وحدة الرياض للتجارة</title>
+<title>تهنئة رمضان | وحدة الرياض</title>
 
 <style>
 body{
-    margin:0;
-    font-family:Tahoma;
-    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
+margin:0;
+font-family:tahoma;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
 }
 
 .box{
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(10px);
-    padding:40px;
-    border-radius:18px;
-    width:350px;
-    text-align:center;
-    box-shadow:0 0 25px rgba(0,0,0,0.4);
-}
-
-.logo{
-    width:90px;
-    margin-bottom:15px;
-}
-
-h1{
-    margin:10px 0;
-    font-size:22px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+padding:40px;
+border-radius:20px;
+text-align:center;
+width:350px;
+box-shadow:0 0 40px rgba(0,0,0,0.4);
 }
 
 input{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:10px;
-    margin-top:20px;
-    font-size:16px;
-    outline:none;
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+margin-top:15px;
+font-size:18px;
+text-align:center;
 }
 
 button{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:10px;
-    margin-top:15px;
-    font-size:16px;
-    cursor:pointer;
-    font-weight:bold;
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+margin-top:12px;
+font-size:18px;
+cursor:pointer;
+}
+
+.show{
+background:#00c6ff;
+color:white;
 }
 
 .save{
-    background:#00c6ff;
-    color:white;
+background:#00e676;
+color:white;
+display:none;
 }
 
-.whatsapp{
-    background:#25D366;
-    color:white;
+.card{
+display:none;
+margin-top:20px;
+background:linear-gradient(135deg,#1e3c72,#2a5298);
+padding:30px;
+border-radius:20px;
 }
 
-.footer{
-    margin-top:15px;
-    font-size:12px;
-    opacity:0.7;
+.name{
+font-size:28px;
+margin-top:15px;
+color:#fff;
 }
 </style>
 </head>
@@ -80,36 +78,47 @@ button{
 
 <div class="box">
 
-<img src="Logo.jpg" class="logo">
+<h2>وحدة الرياض للتجارة</h2>
+<p>اكتب اسمك واطبع التهنئة</p>
 
-<h1>وحدة الرياض للتجارة</h1>
-<p>تسجيل بيانات العميل</p>
+<input type="text" id="name" placeholder="اكتب الاسم هنا">
 
-<input type="text" id="name" placeholder="اكتب اسم العميل">
+<button class="show" onclick="generate()">عرض التهنئة</button>
 
-<button class="save" onclick="saveText()">💾 حفظ النص</button>
-<button class="whatsapp" onclick="sendWhats()">📲 فتح واتساب</button>
-
-<div class="footer">
-تصميم خاص بالشركة
+<div class="card" id="card">
+<h2>رمضان مبارك 🌙</h2>
+<div class="name" id="clientName"></div>
+<p>تتمنى لكم وحدة الرياض للتجارة شهراً مباركاً</p>
 </div>
+
+<button class="save" id="saveBtn" onclick="saveImage()">📸 حفظ كصورة</button>
 
 </div>
 
 <script>
-function saveText(){
-let text = document.getElementById("name").value;
-localStorage.setItem("clientName", text);
-alert("تم الحفظ بنجاح");
+function generate(){
+let name = document.getElementById("name").value;
+if(name===""){
+alert("اكتب الاسم");
+return;
 }
 
-function sendWhats(){
-let text = document.getElementById("name").value;
-let message = "عميل جديد:\n" + text;
-let url = "https://wa.me/?text=" + encodeURIComponent(message);
-window.open(url,"_blank");
+document.getElementById("clientName").innerText = name;
+document.getElementById("card").style.display="block";
+document.getElementById("saveBtn").style.display="block";
+}
+
+function saveImage(){
+html2canvas(document.getElementById("card")).then(canvas=>{
+let link=document.createElement("a");
+link.download="ramadan.png";
+link.href=canvas.toDataURL();
+link.click();
+});
 }
 </script>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 </body>
 </html>

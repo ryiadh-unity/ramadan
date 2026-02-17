@@ -1,22 +1,19 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تهنئة رمضان</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 <style>
 body{
 margin:0;
-font-family:'Tajawal',sans-serif;
-background:linear-gradient(135deg,#0c2d63,#154b9c,#0c2d63);
-height:100vh;
+font-family:Tahoma;
+background:linear-gradient(135deg,#0b2a66,#1548a0);
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
+height:100vh;
 color:white;
 }
 
@@ -26,23 +23,22 @@ text-align:center;
 }
 
 input{
-padding:15px;
-width:260px;
+padding:12px;
+width:220px;
 border:none;
-border-radius:10px;
-font-size:18px;
-text-align:center;
+border-radius:8px;
+font-size:16px;
 }
 
 button{
-padding:14px 30px;
-margin-top:15px;
+padding:10px 20px;
 border:none;
-border-radius:10px;
-font-size:18px;
-background:#19c37d;
+border-radius:8px;
+background:#1cc88a;
 color:white;
+font-size:15px;
 cursor:pointer;
+margin-top:10px;
 }
 
 /* صفحة التهنئة */
@@ -52,16 +48,15 @@ flex-direction:column;
 align-items:center;
 }
 
-/* مربع التهنئة (اصغر) */
 .card{
 width:500px;
 height:500px;
-background:linear-gradient(180deg,#1b4fa3,#0c2d63);
+background:linear-gradient(135deg,#123a88,#1e5fd1);
 border-radius:25px;
 position:relative;
-box-shadow:0 25px 70px rgba(0,0,0,0.5);
-padding:50px 30px;
 text-align:center;
+padding:40px 30px;
+box-shadow:0 0 40px rgba(0,0,0,0.5);
 }
 
 /* الشعار */
@@ -69,58 +64,62 @@ text-align:center;
 position:absolute;
 top:20px;
 right:20px;
-width:160px;
+width:140px;
 }
 
-/* رمضان مبارك */
+/* عنوان رمضان */
 .title{
-font-family:'Reem Kufi Ink',sans-serif;
-font-size:48px;
-font-weight:900;
-margin-top:50px;
-margin-bottom:20px;
-background: linear-gradient(90deg,#fff,#7cd2ff,#fff);
+font-size:42px;
+font-weight:bold;
+margin-top:60px;
+background:linear-gradient(90deg,#ffffff,#a8d8ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
 /* النص */
 .text{
+margin-top:20px;
+line-height:1.8;
 font-size:18px;
-line-height:2;
 }
 
 /* الاسم */
 .name{
-font-size:22px;
-font-weight:bold;
-color:#7cd2ff;
 margin-top:20px;
+font-size:26px;
+font-weight:bold;
+color:#a8f0ff;
 }
 
-/* زر حفظ */
-#saveBtn{
+/* صورة رمضان */
+.ramadan-img{
+width:220px;
+margin-top:25px;
+opacity:0.95;
+}
+
+.saveBtn{
 margin-top:20px;
-background:#19c37d;
+background:#f6c23e;
 }
 </style>
 </head>
 
 <body>
 
-<!-- إدخال الاسم -->
+<!-- صفحة الإدخال -->
 <div id="formPage">
-<h2>اكتب الاسم لعرض التهنئة</h2>
-<input type="text" id="username" placeholder="اكتب الاسم">
+<h2>اكتب اسمك لعرض التهنئة</h2>
+<input type="text" id="username" placeholder="اكتب اسمك هنا">
 <br>
 <button onclick="showCard()">عرض التهنئة</button>
 </div>
 
-<!-- التهنئة -->
+<!-- صفحة التهنئة -->
 <div id="cardPage">
 <div class="card" id="capture">
 
-<!-- حط اسم الشعار هنا -->
 <img src="Logo.png" class="logo">
 
 <div class="title">رمضان مبارك</div>
@@ -133,26 +132,26 @@ background:#19c37d;
 
 <div class="name" id="namePlace"></div>
 
+<img src="ramadan.png" class="ramadan-img">
+
 </div>
 
-<button id="saveBtn" onclick="saveImage()">حفظ كصورة</button>
+<button class="saveBtn" onclick="downloadImage()">حفظ كصورة</button>
 </div>
 
 <script>
 function showCard(){
-let name=document.getElementById("username").value;
-
+let name = document.getElementById("username").value;
 if(name.trim()==""){
-alert("اكتب الاسم");
+alert("اكتب اسمك أولاً");
 return;
 }
-
+document.getElementById("namePlace").innerText = name;
 document.getElementById("formPage").style.display="none";
 document.getElementById("cardPage").style.display="flex";
-document.getElementById("namePlace").innerText=name;
 }
 
-function saveImage(){
+function downloadImage(){
 html2canvas(document.getElementById("capture")).then(canvas=>{
 let link=document.createElement("a");
 link.download="ramadan.png";

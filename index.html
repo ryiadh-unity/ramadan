@@ -9,7 +9,7 @@
 body{
 margin:0;
 font-family:Tajawal, Arial;
-background:#13294b; /* لون فاخر يناسب شعارك */
+background:#0f2747;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -17,66 +17,104 @@ height:100vh;
 color:white;
 }
 
-/* الكرت */
-.card{
-width:600px;
-background:#162e57;
-border-radius:20px;
-padding:50px 40px;
+/* الصفحة الأولى /
+.start{
 text-align:center;
-position:relative;
-box-shadow:0 0 40px rgba(0,0,0,0.4);
 }
 
-/* الشعار فوق يمين */
-.logo{
-position:absolute;
-top:25px;
-right:25px;
-width:160px;
-}
-
-/* رمضان مبارك */
-.ramadan{
-font-size:55px;
-font-weight:bold;
-margin-top:40px;
-margin-bottom:20px;
-}
-
-/* النص */
-.text{
-font-size:22px;
-line-height:2;
+input{
+padding:18px;
+width:280px;
+border-radius:12px;
+border:none;
+font-size:18px;
+text-align:center;
 margin-top:15px;
 }
 
-/* الاسم */
-.name{
-margin-top:25px;
-font-size:26px;
-color:#7db1ff;
+button{
+padding:15px 35px;
+border:none;
+border-radius:12px;
+font-size:18px;
+cursor:pointer;
+margin-top:15px;
+background:#1ea7ff;
+color:white;
+}
+
+/ بطاقة التهنئة /
+.card{
+display:none;
+width:650px;
+background:linear-gradient(180deg,#1d4c9e,#0f2d63);
+border-radius:25px;
+padding:60px 40px;
+text-align:center;
+position:relative;
+box-shadow:0 0 40px rgba(0,0,0,0.5);
+}
+
+/ الشعار /
+.logo{
+position:absolute;
+top:25px;
+right:30px;
+width:160px;
+mix-blend-mode:screen;
+}
+
+/ النص /
+.title{
+font-size:55px;
+margin-top:40px;
 font-weight:bold;
 }
 
-/* زخرفة تحت */
+.text{
+font-size:23px;
+line-height:2;
+margin-top:20px;
+}
+
+.name{
+margin-top:30px;
+font-size:28px;
+color:#7fd3ff;
+font-weight:bold;
+}
+
+/ زخرفة تحت /
 .bottom{
 margin-top:50px;
 font-size:80px;
-opacity:0.15;
-letter-spacing:15px;
+opacity:0.2;
+letter-spacing:20px;
+}
+
+/ زر الحفظ */
+.save{
+margin-top:25px;
+background:#22c55e;
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="start" id="start">
+<h2>اكتب اسمك لعرض التهنئة</h2>
+<input type="text" id="username" placeholder="اكتب الاسم هنا">
+<br>
+<button onclick="showCard()">عرض التهنئة</button>
+</div>
 
-<!-- شعارك -->
-<img src="Logo.jpg" class="logo">
+<div class="card" id="card" >
+<div id="capture">
 
-<div class="ramadan">رمضان مبارك</div>
+<img src="Logo.png" class="logo">
+
+<div class="title">رمضان مبارك</div>
 
 <div class="text">
 نسأل الله أن يجعله شهر خير وبركة<br>
@@ -84,11 +122,36 @@ letter-spacing:15px;
 كل عام وأنتم بخير
 </div>
 
-<div class="name" id="personName">اسم العميل</div>
+<div class="name" id="name"></div>
 
 <div class="bottom">☪ ✦ ☾ ✧</div>
 
 </div>
+
+<button class="save" onclick="saveImage()">📸 حفظ كصورة</button>
+
+</div>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<script>
+function showCard(){
+let n=document.getElementById("username").value;
+if(n==""){alert("اكتب الاسم");return;}
+document.getElementById("start").style.display="none";
+document.getElementById("card").style.display="block";
+document.getElementById("name").innerText=n;
+}
+
+function saveImage(){
+html2canvas(document.getElementById("capture")).then(canvas=>{
+let link=document.createElement("a");
+link.download="ramadan.png";
+link.href=canvas.toDataURL();
+link.click();
+});
+}
+</script>
 
 </body>
 </html>

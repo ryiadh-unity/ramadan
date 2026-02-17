@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تهنئة رمضان</title>
 
-<!-- خطوط فخمة -->
-<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -14,7 +13,7 @@ body{
 margin:0;
 font-family:'Cairo',sans-serif;
 background:linear-gradient(135deg,#0c2d63,#154a9a);
-height:100vh;
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -23,7 +22,9 @@ color:white;
 }
 
 /* صفحة البداية */
-.start{text-align:center;}
+.start{
+text-align:center;
+}
 
 .start input{
 padding:14px;
@@ -46,60 +47,59 @@ font-size:16px;
 cursor:pointer;
 }
 
-/* كرت التهنئة مربع */
+/* الكرت */
 .card{
 display:none;
-width:420px;
-height:420px;
+width:480px;
+max-width:92%;
 background:linear-gradient(180deg,#1b4fa8,#0c2d63);
 border-radius:30px;
-padding:35px 20px;
+padding:50px 25px 40px;
 text-align:center;
 position:relative;
 box-shadow:0 25px 70px rgba(0,0,0,0.5);
-overflow:hidden;
 }
 
-/* الشعار */
+/* الشعار مكبر */
 .logo{
 position:absolute;
-top:18px;
-right:18px;
-width:120px;
+top:15px;
+right:15px;
+width:200px;
 }
 
-/* رمضان مبارك مزخرفة */
+/* رمضان مبارك مزخرف */
 .ramadan-title{
-font-family:'Aref Ruqaa',serif;
-font-size:55px;
-margin-top:35px;
+font-family:'Reem Kufi Fun',cursive;
+font-size:60px;
+margin-top:50px;
 color:#ffffff;
-text-shadow:0 0 20px rgba(255,255,255,0.8);
+text-shadow:0 0 25px rgba(255,255,255,0.9);
 }
 
 /* النص */
 .text{
-margin-top:10px;
+margin-top:15px;
 line-height:2;
-font-size:17px;
+font-size:18px;
 color:#eaf6ff;
 }
 
 /* الاسم */
 .name{
-margin-top:15px;
-font-size:26px;
+margin-top:18px;
+font-size:28px;
 color:#7fe0ff;
 font-weight:bold;
 }
 
 /* صورة المسجد */
 .mosque{
-width:170px;
-margin-top:18px;
+width:220px;
+margin-top:25px;
 }
 
-/* زر حفظ */
+/* زر */
 .saveBtn{
 margin-top:25px;
 padding:14px 35px;
@@ -127,7 +127,7 @@ display:none;
 <div class="card" id="card">
 
 <!-- الشعار -->
-<img src="Logo.png" class="logo" onerror="this.style.display='none'">
+<img src="logo.png" class="logo" onerror="this.style.display='none'">
 
 <div class="ramadan-title">رمضان مبارك</div>
 
@@ -139,7 +139,7 @@ display:none;
 
 <div class="name" id="nameText"></div>
 
-<img src="new-mosque.png" class="mosque">
+<img src="mosque.png" class="mosque">
 
 </div>
 

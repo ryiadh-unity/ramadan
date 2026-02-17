@@ -3,39 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تهنئة رمضان | وحدة الرياض</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<title>تهنئة رمضان - وحدة الرياض للتجارة</title>
 
 <style>
 body{
 margin:0;
-font-family:'Cairo',sans-serif;
-background:linear-gradient(135deg,#0f2e4d,#0a5c8f);
+font-family:Tajawal, Arial;
+background:linear-gradient(135deg,#0a2540,#123d6b);
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-color:#fff;
+color:white;
 overflow:hidden;
 }
 
-/* صندوق البداية /
-.start{
+/* خلفية فوانيس */
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:url("https://i.imgur.com/6Iej2c3.png");
+background-size:400px;
+opacity:0.07;
+pointer-events:none;
+}
+
+/* صندوق البداية */
+.startBox{
 background:rgba(255,255,255,0.08);
 padding:40px;
 border-radius:20px;
 text-align:center;
-backdrop-filter:blur(12px);
+backdrop-filter:blur(10px);
 width:350px;
-box-shadow:0 0 30px rgba(0,0,0,.4);
+box-shadow:0 0 40px rgba(0,0,0,0.3);
 }
 
 input{
 width:90%;
 padding:15px;
-border-radius:12px;
+border-radius:10px;
 border:none;
 margin-top:15px;
 font-size:18px;
@@ -50,106 +61,118 @@ border:none;
 border-radius:12px;
 font-size:18px;
 cursor:pointer;
-font-weight:bold;
-background:linear-gradient(45deg,#00c6ff,#0072ff);
-color:#fff;
 }
 
-/ التصميم /
-.preview{
-display:none;
-margin-top:25px;
-}
+.showBtn{background:#0ea5e9;color:white;}
+.saveBtn{background:#22c55e;color:white;}
+.whatsBtn{background:#25D366;color:white;}
 
+/* بطاقة التهنئة */
 .card{
-background:linear-gradient(180deg,#ffffff,#eaf4ff);
-color:#0b3d91;
-border-radius:25px;
-padding:40px 20px;
-width:420px;
-height:420px;
-position:relative;
-box-shadow:0 25px 60px rgba(0,0,0,.4);
-}
-
-/ فوانيس */
-.fanous{
-position:absolute;
-width:60px;
-top:15px;
-animation:float 3s infinite ease-in-out;
-}
-.f1{left:20px;}
-.f2{right:20px;}
-
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(15px)}
-100%{transform:translateY(0)}
-}
-
-.logo{
-width:180px;
+display:none;
 margin-top:20px;
 }
 
-.company{
-font-size:22px;
-font-weight:bold;
-margin-top:10px;
+.ramadanDesign{
+width:520px;
+height:520px;
+background:white;
+border-radius:25px;
+padding:45px;
+color:#123d6b;
+text-align:center;
+position:relative;
+box-shadow:0 25px 70px rgba(0,0,0,0.35);
+overflow:hidden;
 }
 
-.en{
-font-size:13px;
-color:#777;
-margin-bottom:20px;
+/* إطار ذهبي */
+.ramadanDesign::before{
+content:"";
+position:absolute;
+inset:0;
+border-radius:25px;
+padding:2px;
+background:linear-gradient(45deg,gold,transparent,gold);
+-webkit-mask:
+linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+-webkit-mask-composite: xor;
+mask-composite: exclude;
 }
 
+/* فوانيس يمين */
+.ramadanDesign::after{
+content:"";
+position:absolute;
+top:0;
+right:0;
+width:120px;
+height:100%;
+background:url("https://i.imgur.com/M9bGz6A.png") repeat-y;
+background-size:100px;
+opacity:0.15;
+}
+
+/* فوانيس يسار */
+.lanternLeft{
+position:absolute;
+top:0;
+left:0;
+width:120px;
+height:100%;
+background:url("https://i.imgur.com/M9bGz6A.png") repeat-y;
+background-size:100px;
+opacity:0.15;
+}
+
+/* الشعار */
+.logo{
+width:230px;
+margin-bottom:25px;
+}
+
+/* النص */
 .text{
-font-size:18px;
-line-height:1.9;
-margin-top:15px;
+font-size:22px;
+line-height:2;
+font-weight:500;
 }
 
 .name{
-font-size:28px;
-margin-top:25px;
+margin-top:35px;
+font-size:32px;
 font-weight:bold;
-color:#0b5ed7;
+color:#0a2540;
 }
 
-.saveBtn{
-background:linear-gradient(45deg,#16a34a,#22c55e);
-margin-top:15px;
-}
-
-.whats{
-background:#25D366;
+.footer{
 margin-top:10px;
+font-size:14px;
+color:#888;
 }
 </style>
 </head>
 
 <body>
 
-<div class="start">
+<div class="startBox">
+
 <h2>🌙 تهنئة رمضان</h2>
-<input id="name" placeholder="اكتب الاسم هنا">
-<button onclick="showCard()">عرض التهنئة</button>
+<input type="text" id="name" placeholder="اكتب الاسم هنا">
 
-<div class="preview" id="preview">
+<button class="showBtn" onclick="showCard()">عرض التهنئة</button>
 
-<div class="card" id="card">
+<div class="card" id="cardSection">
 
-<img src="logo.jpg" class="logo">
+<div class="ramadanDesign" id="capture">
 
-<img src="https://cdn-icons-png.flaticon.com/512/2948/2948035.png" class="fanous f1">
-<img src="https://cdn-icons-png.flaticon.com/512/2948/2948035.png" class="fanous f2">
+<div class="lanternLeft"></div>
 
-<div class="company">وحدة الرياض للتجارة</div>
-<div class="en">Riyadh Unity for Trading</div>
+<img src="Logo.png" class="logo">
 
 <div class="text">
+وحدة الرياض للتجارة<br>
 تتقدم إليكم بأصدق التهاني والتبريكات<br>
 بمناسبة حلول شهر رمضان المبارك<br>
 كل عام وأنتم بخير
@@ -157,35 +180,43 @@ margin-top:10px;
 
 <div class="name" id="personName"></div>
 
+<div class="footer">Ramadan Kareem</div>
+
 </div>
 
 <button class="saveBtn" onclick="saveImage()">📸 حفظ كصورة</button>
-<button class="whats" onclick="sendWhats()">📲 مشاركة واتساب</button>
+<button class="whatsBtn" onclick="shareWhats()">📲 مشاركة واتساب</button>
 
 </div>
 </div>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 <script>
 function showCard(){
 let name=document.getElementById("name").value;
-if(name===""){alert("اكتب الاسم");return;}
-document.getElementById("preview").style.display="block";
+if(name==""){
+alert("اكتب الاسم");
+return;
+}
 document.getElementById("personName").innerText=name;
+document.getElementById("cardSection").style.display="block";
 }
 
 function saveImage(){
-html2canvas(document.getElementById("card")).then(canvas=>{
+html2canvas(document.getElementById("capture")).then(canvas=>{
 let link=document.createElement("a");
 link.download="ramadan.png";
-link.href=canvas.toDataURL();
+link.href=canvas.toDataURL("image/png");
 link.click();
 });
 }
 
-function sendWhats(){
+function shareWhats(){
 let name=document.getElementById("name").value;
 let msg="رمضان مبارك 🌙\n"+name+"\nمن وحدة الرياض للتجارة";
-window.open("https://wa.me/?text="+encodeURIComponent(msg));
+let url="https://wa.me/?text="+encodeURIComponent(msg);
+window.open(url,"_blank");
 }
 </script>
 

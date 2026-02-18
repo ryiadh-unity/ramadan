@@ -46,7 +46,7 @@ font-size:16px;
 cursor:pointer;
 }
 
-/* صورة التهنئة */
+/* الكرت */
 .card{
 display:none;
 position:relative;
@@ -56,17 +56,17 @@ max-width:95%;
 
 .card img{
 width:100%;
-border-radius:12px;
+border-radius:16px;
 }
 
-/* الاسم فوق الصورة */
+/* الاسم تحت الكلام الانجليزي */
 .name{
 position:absolute;
-bottom:60px;
-left:50%;
-transform:translateX(-50%);
+top:58%;   /* مكان الاسم تحت النص الإنجليزي */
+left:63%;  /* يمين الصورة */
+transform:translate(-50%,-50%);
 color:#1c3d6b;
-font-size:28px;
+font-size:30px;
 font-weight:bold;
 }
 
@@ -83,7 +83,7 @@ font-weight:bold;
 </div>
 
 <div class="card" id="card">
-<img src="ramadan.JPG">
+<img src="ramadan.jpg">
 <div class="name" id="nameText"></div>
 </div>
 

@@ -3,27 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تهنئة رمضان</title>
+<title>Ramadan Kareem</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-
 body{
 margin:0;
 font-family:'Cairo',sans-serif;
-background:linear-gradient(135deg,#0c2d63,#154a9a);
-min-height:100vh;
+background:#0e1b3a;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-color:white;
 }
 
-/* صفحة البداية */
+/* ادخال الاسم */
 .start{
 text-align:center;
+color:white;
 }
 
 .start input{
@@ -41,75 +40,34 @@ margin-top:10px;
 padding:12px 30px;
 border:none;
 border-radius:10px;
-background:#00c3ff;
+background:#00bcd4;
 color:#fff;
 font-size:16px;
 cursor:pointer;
 }
 
-/* الكرت */
+/* صورة التهنئة */
 .card{
 display:none;
-width:480px;
-max-width:92%;
-background:linear-gradient(180deg,#1b4fa8,#0c2d63);
-border-radius:30px;
-padding:50px 25px 40px;
-text-align:center;
 position:relative;
-box-shadow:0 25px 70px rgba(0,0,0,0.5);
+width:700px;
+max-width:95%;
 }
 
-/* الشعار مكبر */
-.logo{
-position:absolute;
-top:15px;
-right:15px;
-width:200px;
-}
-
-/* رمضان مبارك مزخرف */
-.ramadan-title{
-font-family:'Reem Kufi Fun',cursive;
-font-size:60px;
-margin-top:50px;
-color:#ffffff;
-text-shadow:0 0 25px rgba(255,255,255,0.9);
-}
-
-/* النص */
-.text{
-margin-top:15px;
-line-height:2;
-font-size:18px;
-color:#eaf6ff;
-}
-
-/* الاسم */
-.name{
-margin-top:18px;
-font-size:28px;
-color:#7fe0ff;
-font-weight:bold;
-}
-
-/* صورة المسجد */
-.mosque{
-width:220px;
-margin-top:25px;
-}
-
-/* زر */
-.saveBtn{
-margin-top:25px;
-padding:14px 35px;
-border:none;
+.card img{
+width:100%;
 border-radius:12px;
-background:#00c3ff;
-color:#fff;
-font-size:16px;
-cursor:pointer;
-display:none;
+}
+
+/* الاسم فوق الصورة */
+.name{
+position:absolute;
+bottom:60px;
+left:50%;
+transform:translateX(-50%);
+color:#1c3d6b;
+font-size:28px;
+font-weight:bold;
 }
 
 </style>
@@ -118,55 +76,29 @@ display:none;
 <body>
 
 <div class="start" id="startPage">
-<h2>اكتب اسمك لعرض التهنئة</h2>
+<h2>اكتب اسمك</h2>
 <input type="text" id="username" placeholder="اكتب الاسم هنا">
 <br>
 <button onclick="showCard()">عرض التهنئة</button>
 </div>
 
 <div class="card" id="card">
-
-<!-- الشعار -->
-<img src="Logo.png" class="logo" onerror="this.style.display='none'">
-
-<div class="ramadan-title">رمضان مبارك</div>
-
-<div class="text">
-نسأل الله أن يجعله شهر خير وبركة<br>
-وأن يتقبل منا ومنكم الصيام والقيام وصالح الأعمال<br>
-كل عام وأنتم بخير
-</div>
-
+<img src="ramadan.jpg">
 <div class="name" id="nameText"></div>
-
-<img src="new-mosque.png" class="mosque">
-
 </div>
-
-<button class="saveBtn" id="saveBtn" onclick="saveImage()">حفظ كصورة</button>
-
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 <script>
 function showCard(){
 let name=document.getElementById("username").value;
+
 if(name==""){
 alert("اكتب الاسم أول");
 return;
 }
+
 document.getElementById("nameText").innerText=name;
 document.getElementById("startPage").style.display="none";
 document.getElementById("card").style.display="block";
-document.getElementById("saveBtn").style.display="block";
-}
-
-function saveImage(){
-html2canvas(document.getElementById("card")).then(canvas=>{
-let link=document.createElement("a");
-link.download="ramadan-card.png";
-link.href=canvas.toDataURL();
-link.click();
-});
 }
 </script>
 
